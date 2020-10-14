@@ -35,18 +35,26 @@ const listOfSections = document.querySelectorAll('section');
 */
 
 // build the nav
-function makeNavLinks() {
+function insertNavLinks() {
 
 };
 
 
 // Add class 'active' to section when near top of viewport
-function addClassActive() {
+function insertActiveClass() {
 
 };
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSectionID(id) {
+
+};
+
+function toggleActiveSection() {
+
+};
+
+function toggleActiveNav() {
 
 };
 
