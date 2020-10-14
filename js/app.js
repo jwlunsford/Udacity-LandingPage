@@ -17,6 +17,8 @@
  * Define Global Variables
  * 
 */
+const docFragment = document.createDocumentFragment();
+const listOfSections = document.querySelectorAll('section');
 
 
 /**
@@ -26,7 +28,6 @@
 */
 
 
-
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -34,13 +35,20 @@
 */
 
 // build the nav
+function makeNavLinks() {
+
+};
 
 
 // Add class 'active' to section when near top of viewport
+function addClassActive() {
 
+};
 
 // Scroll to anchor ID using scrollTO event
+function scrollToSectionID(id) {
 
+};
 
 /**
  * End Main Functions
@@ -48,7 +56,8 @@
  * 
 */
 
-// Build menu 
+// Build menu
+
 
 // Scroll to section on link click
 
