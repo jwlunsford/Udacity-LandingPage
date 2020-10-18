@@ -52,8 +52,8 @@ function insertActiveClass() {
 };
 
 // Scroll to section using scrollTO event
-function scrollToSection(targetNode) {
-    console.log(targetNode.textContent);
+function scrollToSection(e) {
+    console.log(e.target.textContent);
 };
 
 function toggleActiveSection() {
@@ -73,7 +73,7 @@ function toggleActiveNav() {
 navBarList = document.getElementById('navbar__list')
 navBarList.addEventListener('click', function(e) {
     if(e.target && e.target.nodeName === 'LI') {
-        scrollToSection(e.target);
+        scrollToSection(e);
     }
 });
 
