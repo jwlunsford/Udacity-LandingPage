@@ -18,6 +18,7 @@
  * 
 */
 const listOfSections = document.querySelectorAll('section');
+const docFragment = document.createDocumentFragment();
 
 
 /**
@@ -27,11 +28,11 @@ const listOfSections = document.querySelectorAll('section');
 */
 function initializeMenu() {
     const navBarList = document.getElementById('navbar__list')
-    const docFragment = document.createDocumentFragment();
     for (let section of listOfSections) {
         const newNavItem = document.createElement('li');
         newNavItem.textContent = section.dataset.nav;
         newNavItem.classList.add('menu__link');
+        newNavItem.setAttribute('data-id', section.id);
         docFragment.appendChild(newNavItem);
     }
     navBarList.appendChild(docFragment);
@@ -53,7 +54,8 @@ function insertActiveClass() {
 
 // Scroll to section using scrollTO event
 function scrollToSection(e) {
-    console.log(e.target.textContent);
+    const section = document.getElementById(e.target.dataset.id);
+    section.scrollIntoView({behavior: 'smooth'});
 };
 
 function toggleActiveSection() {
