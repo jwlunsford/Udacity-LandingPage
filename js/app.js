@@ -19,6 +19,7 @@
 */
 const sectionList = document.querySelectorAll('section');
 const docFragment = document.createDocumentFragment();
+let activeSection = document.querySelector('.your-active-class');
 
 
 /**
@@ -43,12 +44,10 @@ function initializeMenu() {
 // uses clientWidth and clientHeight properties for cross-browser support.
 function isInViewport(element) {
     const position = element.getBoundingClientRect();
-    return (
-        position.top >= 0 &&
-        position.left >= 0 &&
-        position.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-        position.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    );
+    const viewHeight = window.innerHeight;
+    // activeThreshold within 35% of the view
+    const activeThreshold = viewHeight * 0.35;
+    return (position.top < activeThreshold && position.bottom > activeThreshold);
 }
 
 /**
@@ -56,9 +55,6 @@ function isInViewport(element) {
  * Begin Main Functions
  * 
 */
-
-// build the nav
-
 
 // Add class 'active' to section when near top of viewport
 function insertActiveClass() {
@@ -75,11 +71,10 @@ function scrollToSection(e) {
 // uses helper function isInViewport().
 function toggleActiveSection() {
     for (const section of sectionList) {
-        if (isInViewport(section)) {
+        if (isInViewport(section) && section !== activeSection) {
+            activeSection.classList.remove('your-active-class');
             section.classList.add('your-active-class');
-        }
-        else {
-            section.classList.remove('your-active-class');
+            activeSection = section;
         }
     }
 }
@@ -105,16 +100,9 @@ navBarList.addEventListener('click', function(e) {
 
 // set sections as active
 document.addEventListener('scroll', function () {
-    const sec1 = document.getElementById('section1');
-    const viewHeight = window.innerHeight;
-    const scrollY = window.pageYOffset;
-    const pos = sec1.getBoundingClientRect();
-    const msg = `Top: ${pos.top}
-                 View Height: ${viewHeight}
-                 Scroll Y: ${scrollY}`
-    console.log(msg);
+    toggleActiveSection();
 }
-)
+);
 
 
 // Build menu
