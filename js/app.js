@@ -19,7 +19,9 @@
 */
 const sectionList = document.querySelectorAll('section');
 const docFragment = document.createDocumentFragment();
+
 let activeSection = document.querySelector('.your-active-class');
+let activeNavLink = document.querySelector('active-navlink')
 
 
 /**
@@ -79,6 +81,7 @@ function toggleActiveSection() {
     }
 }
 
+// set active nav to reflect the active section
 function toggleActiveNav() {
 
 }
