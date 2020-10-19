@@ -47,7 +47,7 @@ function initializeMenu() {
 function isInViewport(element) {
     const position = element.getBoundingClientRect();
     const viewHeight = window.innerHeight;
-    // activeThreshold within 35% of the view
+    // activeThreshold set to 35% of the view - can change later if needed
     const activeThreshold = viewHeight * 0.35;
     return (position.top < activeThreshold && position.bottom > activeThreshold);
 }
