@@ -38,7 +38,7 @@ function initializeMenu() {
         newNavItem.setAttribute('data-id', section.id);
         docFragment.appendChild(newNavItem);
         if (activeNavLink == null) {
-            newNavItem.classList.add('active-navlink')
+            newNavItem.classList.add('active')
             activeNavLink = newNavItem;
         }
     }
@@ -67,6 +67,11 @@ function insertActiveClass() {
 
 }
 
+/* Scrolling and clicking nav should toggle active section and nav */
+
+
+
+
 // Scroll to section using scrollTO event
 function scrollToSection(e) {
     const section = document.getElementById(e.target.dataset.id);
@@ -89,8 +94,8 @@ function toggleActiveSection() {
 function toggleActiveNav(element) {
     // if this is the activelink - leave it be
     if (element !== activeNavLink) {
-        activeNavLink.classList.remove('active-navlink');
-        element.classList.add('active-navlink');
+        element.classList.toggle('active');
+        activeNavLink.classList.toggle('active');
         activeNavLink = element;
     }
 }
