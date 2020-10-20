@@ -93,6 +93,10 @@ section {
     cursor: pointer;
 }
 
+.navbar__menu .menu__link .active-navlink {
+    color: #fff;
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;
