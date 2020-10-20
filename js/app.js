@@ -29,6 +29,7 @@ let activeNavLink = document.querySelector('active-navlink')
  * Start Helper Functions
  * 
 */
+
 function initializeMenu() {
     const navBarList = document.getElementById('navbar__list')
     for (let section of sectionList) {
@@ -36,6 +37,7 @@ function initializeMenu() {
         newNavItem.textContent = section.dataset.nav;
         newNavItem.classList.add('menu__link');
         newNavItem.setAttribute('data-id', section.id);
+        newNavItem.setAttribute('id', `nav-${section.id}`);
         docFragment.appendChild(newNavItem);
         if (activeNavLink == null) {
             newNavItem.classList.add('active')
@@ -51,8 +53,8 @@ function initializeMenu() {
 function isInViewport(element) {
     const position = element.getBoundingClientRect();
     const viewHeight = window.innerHeight;
-    // activeThreshold set to 35% of the view - can change later if needed
-    const activeThreshold = viewHeight * 0.35;
+    // activeThreshold set to 25% of the view - can change later if needed
+    const activeThreshold = viewHeight * 0.25;
     return (position.top < activeThreshold && position.bottom > activeThreshold);
 }
 
@@ -62,19 +64,9 @@ function isInViewport(element) {
  * 
 */
 
-// Add class 'active' to section when near top of viewport
-function insertActiveClass() {
-
-}
-
-/* Scrolling and clicking nav should toggle active section and nav */
-
-
-
-
-// Scroll to section using scrollTO event
-function scrollToSection(e) {
-    const section = document.getElementById(e.target.dataset.id);
+// Scroll to section using scrollIntoView method
+function scrollToSection(element) {
+    const section = document.getElementById(element.target.dataset.id);
     section.scrollIntoView({behavior: 'smooth'});
 }
 
@@ -88,16 +80,19 @@ function toggleActiveSection() {
             activeSection = section;
         }
     }
+    // need to toggle nav when active section changes
+    const toggleNav = document.querySelector(`#nav-${activeSection.id}`);
+    toggleActiveNav(toggleNav); 
 }
 
-// set active nav to reflect the active section
+// set active navlink to mimic the active section
 function toggleActiveNav(element) {
     // if this is the activelink - leave it be
     if (element !== activeNavLink) {
         element.classList.toggle('active');
         activeNavLink.classList.toggle('active');
         activeNavLink = element;
-    }
+    }    
 }
 
 /**
@@ -106,11 +101,13 @@ function toggleActiveNav(element) {
  * 
 */
 
-// scroll to section on link click
+// scroll to section and toggle nav on link click
 navBarList = document.getElementById('navbar__list')
 navBarList.addEventListener('click', function(e) {
     if(e.target && e.target.nodeName === 'LI') {
+        // scroll to section and toggle the nav
         scrollToSection(e);
+        toggleActiveNav(e.target);
     }
 }
 )
