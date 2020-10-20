@@ -37,6 +37,10 @@ function initializeMenu() {
         newNavItem.classList.add('menu__link');
         newNavItem.setAttribute('data-id', section.id);
         docFragment.appendChild(newNavItem);
+        if (activeNavLink == null) {
+            newNavItem.classList.add('active-navlink')
+            activeNavLink = newNavItem;
+        }
     }
     navBarList.appendChild(docFragment);
 }
@@ -82,8 +86,13 @@ function toggleActiveSection() {
 }
 
 // set active nav to reflect the active section
-function toggleActiveNav() {
-
+function toggleActiveNav(element) {
+    // if this is the activelink - leave it be
+    if (element !== activeNavLink) {
+        activeNavLink.classList.remove('active-navlink');
+        element.classList.add('active-navlink');
+        activeNavLink = element;
+    }
 }
 
 /**
