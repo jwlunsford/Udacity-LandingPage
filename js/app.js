@@ -34,7 +34,7 @@ function initializeMenu() {
     const navBarList = document.getElementById('navbar__list')
     for (let section of sectionList) {
         const thisNavItem = document.createElement('li');
-        thisNavItem.textContent = section.dataset.nav;
+        thisNavItem.innerHTML = section.dataset.nav;
         thisNavItem.classList.add('menu__link');
         thisNavItem.setAttribute('data-id', section.id);
         // need the next attribute to determine which nav button
