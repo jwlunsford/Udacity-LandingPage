@@ -33,15 +33,17 @@ let activeNavLink = document.querySelector('active-navlink')
 function initializeMenu() {
     const navBarList = document.getElementById('navbar__list')
     for (let section of sectionList) {
-        const newNavItem = document.createElement('li');
-        newNavItem.textContent = section.dataset.nav;
-        newNavItem.classList.add('menu__link');
-        newNavItem.setAttribute('data-id', section.id);
-        newNavItem.setAttribute('id', `nav-${section.id}`);
-        docFragment.appendChild(newNavItem);
+        const thisNavItem = document.createElement('li');
+        thisNavItem.textContent = section.dataset.nav;
+        thisNavItem.classList.add('menu__link');
+        thisNavItem.setAttribute('data-id', section.id);
+        // need the next attribute to determine which nav button
+        // to toggle when a section is active
+        thisNavItem.setAttribute('id', `nav-${section.id}`);
+        docFragment.appendChild(thisNavItem);
         if (activeNavLink == null) {
-            newNavItem.classList.add('active')
-            activeNavLink = newNavItem;
+            thisNavItem.classList.add('active')
+            activeNavLink = thisNavItem;
         }
     }
     navBarList.appendChild(docFragment);
@@ -81,6 +83,10 @@ function toggleActiveSection() {
         }
     }
     // need to toggle nav when active section changes
+    // there may be a better way to implement this, i don't like
+    // the fact that it's called inside this function, 
+    // the two should be separate, it really needs
+    // a helper function.
     const toggleNav = document.querySelector(`#nav-${activeSection.id}`);
     toggleActiveNav(toggleNav); 
 }
