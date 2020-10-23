@@ -21,7 +21,7 @@ const sectionList = document.querySelectorAll('section');
 const docFragment = document.createDocumentFragment();
 
 let activeSection = document.querySelector('.your-active-class');
-let activeNavLink = document.querySelector('active-navlink')
+let activeNavLink = document.querySelector('active')
 
 
 /**
@@ -42,7 +42,7 @@ function initializeMenu() {
         thisNavItem.setAttribute('id', `nav-${section.id}`);
         docFragment.appendChild(thisNavItem);
         if (activeNavLink == null) {
-            thisNavItem.classList.add('active')
+            thisNavItem.classList.toggle('active')
             activeNavLink = thisNavItem;
         }
     }
@@ -52,7 +52,7 @@ function initializeMenu() {
 // get the elements position relative to the viewport, check it's
 // positional values and return true or false.
 // uses clientWidth and clientHeight properties for cross-browser support.
-function isInViewport(element) {
+function elementInViewport(element) {
     const position = element.getBoundingClientRect();
     const viewHeight = window.innerHeight;
     // activeThreshold set to 25% of the view - can change later if needed
@@ -76,7 +76,7 @@ function scrollToSection(element) {
 // uses helper function isInViewport().
 function toggleActiveSection() {
     for (const section of sectionList) {
-        if (isInViewport(section) && section !== activeSection) {
+        if (elementInViewport(section) && section !== activeSection) {
             activeSection.classList.remove('your-active-class');
             section.classList.add('your-active-class');
             activeSection = section;
