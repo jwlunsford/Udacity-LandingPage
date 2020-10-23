@@ -73,7 +73,7 @@ function scrollToSection(element) {
 }
 
 // loop through each section to determine which one is visible
-// uses helper function isInViewport().
+// uses helper function elementInViewport().
 function toggleActiveSection() {
     for (const section of sectionList) {
         if (elementInViewport(section) && section !== activeSection) {
