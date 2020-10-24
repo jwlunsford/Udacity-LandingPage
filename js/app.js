@@ -37,8 +37,9 @@ function initializeMenu() {
         thisNavItem.innerHTML = section.dataset.nav;
         thisNavItem.classList.add('menu__link');
         thisNavItem.setAttribute('data-id', section.id);
-        // need the next attribute to determine which nav button
-        // to toggle when a section is active
+        /* need the next attribute to determine which nav button
+           to toggle when a section is activated
+        */
         thisNavItem.setAttribute('id', `nav-${section.id}`);
         docFragment.appendChild(thisNavItem);
         if (activeNavLink == null) {
@@ -55,8 +56,8 @@ function initializeMenu() {
 function elementInViewport(element) {
     const position = element.getBoundingClientRect();
     const viewHeight = window.innerHeight;
-    // activeThreshold set to 25% of the view - can change later if needed
-    const activeThreshold = viewHeight * 0.25;
+    // activeThreshold set to 35% of the view - can change later if needed
+    const activeThreshold = viewHeight * 0.45;
     return (position.top < activeThreshold && position.bottom > activeThreshold);
 }
 
