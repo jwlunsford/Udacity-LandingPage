@@ -2,18 +2,21 @@
 
 ## Table of Contents
 
+* [About](#about)
 * [Instructions](#instructions)
-* [Created By](#createdby)
+* [Authors](#author)
+
+## About
+
+This project demonstrates a simple HTML multi-section landing page with dynamically added navigation links and scroll behavior. The purpose of this exercise was to demonstrate working with the Document Object Model (DOM) using JavaScript ES2015/ES6.
+
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Open 'index.html' in a compatible web browser to display the landing page.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Author
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+Files 'styles.css' and 'index.html' were provided by the team at Udacity.
 
-## Created By
-
-Written By:     Jon Lunsford
-Date:           October 23, 2020
+File 'app.js' was completed by Jon Lunsford, on October 23, 2020.
