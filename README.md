@@ -17,5 +17,5 @@ Open **index.html** in a compatible web browser to display the landing page.
 
 ## Author
 
-* Files **styles.css** and **index.html** were provided by the team at Udacity.
-* File **app.js** was completed by Jon Lunsford, on October 23, 2020.
+* Files **css/styles.css** and **index.html** were provided by the team at Udacity.
+* File **js/app.js** was completed by Jon Lunsford, on October 23, 2020.
